@@ -14,7 +14,6 @@ int contarLineas(const std::string& Archivo) {
     archivo.close();
     return i;
 }
-
 int main() {
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
