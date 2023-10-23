@@ -3,25 +3,16 @@
 #include <fstream>
 #include <sstream>
 #include "HashMap/HashMap.h"
+#include "Lista/Lista.h"
 #include "Datos/ClaseDATO.h"
 //Esta funcion sirve para contar la cantidad de lineas(datos) del archivo
-int contarLineas(const std::string& Archivo) {
-    std::string linea;
-    std::ifstream archivo(Archivo);
-    int i = 0;
-    while (std::getline(archivo, linea))
-        i++;
-    archivo.close();
-    return i;
-}
-HashMap<int,Datos>CreacionTabla(const std::string& NombreArchivo)
+Lista<Datos>CreacionLista(const std::string& NombreArchivo)
 {
     std::string linea,aux;
     char l = ',';
     int i = 0;
-    int Lineas = contarLineas(NombreArchivo);
     ifstream archivo(NombreArchivo);
-    HashMap<int, Datos> Hash(Lineas); 
+    Lista<Datos> Lista; 
     std::getline(archivo,linea);
     while (getline(archivo, linea)) {
         std::stringstream stream(linea);
@@ -54,12 +45,24 @@ HashMap<int,Datos>CreacionTabla(const std::string& NombreArchivo)
                 D5 = std::stoi(d5);
             }          
             Datos aux(Grupo, CodigoBarras, Articulo, D1, D2, D3, D4, D5);
-            Hash.put(i, aux);
-            Datos xd=Hash.get(i);
-            xd.ver();
-            i++;
+            Lista.insertarUltimo(aux);
     }
-    return Hash;
+    return Lista;
+}
+Lista<std::string>min_stock(int n,Lista<Datos>lista)
+{
+    Lista<std::string>resultado;
+    int i,tpa;
+    for(i=0;i<lista.getTamanio();i++)
+    {
+        Datos aux=lista.getDato(i);
+        tpa=aux.getD1()+aux.getD2()+aux.getD3()+aux.getD4()+aux.getD5();
+        if(tpa<=n)
+        {
+            resultado.insertarUltimo(aux.getArticulo());
+        }
+    }
+    return resultado;
 }
 
 int main() {
@@ -67,7 +70,9 @@ int main() {
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
     std::string NombreArchivo = "Inventariado Fisico .csv";
-    HashMap<int,Datos>Hash=CreacionTabla(NombreArchivo);
+    Lista<Datos>Lista=CreacionLista(NombreArchivo);
+    Datos prueba=Lista.getDato(5);
+    prueba.ver();
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;

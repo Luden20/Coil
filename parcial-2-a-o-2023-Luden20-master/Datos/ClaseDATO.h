@@ -49,6 +49,13 @@ public:
         std::cout << "D5: " << D5 << std::endl;
     }
     int getD1(){return D1;}
+    int getD2(){return D2;}
+    int getD3(){return D3;}
+    int getD4(){return D4;}
+    int getD5(){return D5;}
+    std::string getGrupo(){return Grupo;}
+    std::string getCodigoBarras(){return CodigoBarras;}
+    std::string getArticulo(){return Articulo;}
 };
 
 #endif
