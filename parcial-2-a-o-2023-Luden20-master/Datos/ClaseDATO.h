@@ -48,6 +48,7 @@ public:
         std::cout << "D4: " << D4 << std::endl;
         std::cout << "D5: " << D5 << std::endl;
     }
+    int getD1(){return D1;}
 };
 
 #endif
