@@ -39,19 +39,19 @@ int main() {
         std::getline(stream, d3, l);
         std::getline(stream, d4, l);
         std::getline(stream, d5, l);
-        if (!d1="") {
+        if (d1!="") {
             D1 = std::stoi(d1);
         }
-        if (!d2="") {
+        if (d2!="") {
             D2 = std::stoi(d2);
         }
-        if (!d3="") {
+        if (d3!="") {
             D3 = std::stoi(d3);
         }
-        if (!d4="") {
+        if (d4!="") {
             D4 = std::stoi(d4);
         }
-        if (!d5="") {
+        if (d5!="") {
             D5 = std::stoi(d5);
         }          
         Datos aux(Grupo, CodigoBarras, Articulo, D1, D2, D3, D4, D5);
