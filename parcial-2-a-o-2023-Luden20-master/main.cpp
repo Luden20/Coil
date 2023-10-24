@@ -65,6 +65,7 @@ Lista<std::string>min_stock(int n,Lista<Datos>lista)
     cout<<"Fin min_stock\n";
     return resultado;
 }
+
 Lista<std::string>max_stock(int n,Lista<Datos>lista)
 {
     Lista<std::string>resultado;
@@ -90,6 +91,7 @@ int stock(std::string articulo,Lista<Datos>lista)
         std::string str=aux.getArticulo();
         if(articulo==str)
         {
+            cout<<"Encontrado\n";
             st=aux.getD1()+aux.getD2()+aux.getD3()+aux.getD4()+aux.getD5();
             break;
         }     
@@ -111,7 +113,7 @@ int main() {
     Lista<Datos>DatosGuardados=CreacionLista(NombreArchivo);
     Datos p=DatosGuardados.getDato(21);
     p.ver();
-    //i=stock(NombreBusquedaStock,DatosGuardados);
+    i=stock(NombreBusquedaStock,DatosGuardados);
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
