@@ -7,6 +7,11 @@
 #include "../Datos/ClaseDATO.h"
 #include <string>
 using namespace std;
+/*
+Notas
+Esta clase utiliza la clase lista que ya estaba previamente hecha y utiliza la clase Datos que esta en otro archivo
+Aqui se incluiran las funciones y metodos
+*/ 
 
 class ListaDatos {
 private:

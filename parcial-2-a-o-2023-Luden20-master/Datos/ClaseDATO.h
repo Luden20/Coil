@@ -2,7 +2,12 @@
 #define ClaseDATO
 #include <string>
 using namespace std;
-
+/*
+Clase Dato
+Sirve para guardar la informacion de cada linea
+Cada instancia de la clase contiene en string la informacion de grupo, codigo de varras y articulo
+mientras se gurdan en ints la cantidad de stock en cada deposito
+*/
 class Datos {
 private:
     std::string Grupo;
@@ -47,6 +52,7 @@ public:
         std::cout << "D4: " << D4 << std::endl;
         std::cout << "D5: " << D5 << std::endl;
     }
+    //No hay get  en c++, asi que me las arregle haciendo esto
     int getD1(){return D1;}
     int getD2(){return D2;}
     int getD3(){return D3;}

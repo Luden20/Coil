@@ -12,7 +12,8 @@ int main() {
     std::string NombreBusquedaStock = "ANGULOS FIXSYSTEM";
     ListaDatos DatosGuardados(NombreArchivo);
     DatosGuardados.stock(NombreBusquedaStock,5);
-    
+    Lista<std::string> Nombres=DatosGuardados.min_stock(2,1);
+    Nombres.print();    
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
