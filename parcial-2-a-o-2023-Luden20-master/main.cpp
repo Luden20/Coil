@@ -3,7 +3,6 @@
 #include <fstream>
 #include <sstream>
 #include "HashMap/HashMap.h"
-#include "Lista/Lista.h"
 #include "Datos/ClaseDATO.h"
 #include "ListaDatos/ListaDatos.h"
 //Esta funcion sirve para contar la cantidad de lineas(datos) del archivo
