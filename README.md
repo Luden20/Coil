@@ -5,4 +5,5 @@ PREGUNTAR AL PROFE AL RESPECTO
 
 Al parecer hay algunos datos corruptos por caracteres raros ,me tocara ver como resuelvo eso
 de momento estan stock, min stock y max stock (estas dos solo con una rgumento)
+ahora esta stock con la especificacion del deposito
 Tambien hay caracteres  donde deveria ir tildes o ñ, no se como resolverlo queda pendiente todavia

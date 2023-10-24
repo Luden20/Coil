@@ -235,13 +235,13 @@ template <class T> void Lista<T>::vaciar() {
 	inicio = nullptr;
 
 }
-
+//Me tome lalibertad de modificar el print para poder verlo de una forma racional
 template<class T>
 void Lista<T>::print() {
     Nodo<T> *aux = inicio;
 
     while (aux != nullptr) {
-        std::cout << aux->getDato() << "->";
+        std::cout << aux->getDato() << "\n";
         aux = aux->getSiguiente();
     }
     std::cout << "NULL" << std::endl;

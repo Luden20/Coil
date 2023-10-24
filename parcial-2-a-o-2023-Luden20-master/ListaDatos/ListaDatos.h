@@ -64,6 +64,7 @@ public:
         }
         cout<<"Se termino la creacion\n";
     }
+    //Metodos que se pidieron
         Lista<std::string>min_stock(int n)
     {
         Lista<std::string>resultado;
@@ -80,6 +81,40 @@ public:
         cout<<"Fin min_stock\n";
         return resultado;
     }
+    Lista<std::string>min_stock(int n,int Deposito)
+    {
+        Lista<std::string> resultado;
+        int i,tpa;
+        for(i=0;i<lista.getTamanio();i++)
+        {
+            Datos aux=lista.getDato(i);
+            switch (Deposito)
+                    {
+                        case 1:
+                            tpa=aux.getD1();
+                            break;
+                        case 2:
+                            tpa=aux.getD2();
+                            break;
+                        case 3:
+                            tpa=aux.getD3();
+                            break;
+                        case 4:
+                            tpa=aux.getD4();
+                            break;
+                        case 5:
+                            tpa=aux.getD5();
+                            break;
+                    }
+            if(tpa<=n)
+            {
+                resultado.insertarUltimo(aux.getArticulo());
+            }
+        }
+        cout<<"Fin min_stock\n";
+        return resultado;
+    }
+
 
     Lista<std::string>max_stock(int n)
     {
@@ -108,11 +143,51 @@ public:
             {
                 cout<<"Encontrado\n";
                 st=aux.getD1()+aux.getD2()+aux.getD3()+aux.getD4()+aux.getD5();
+                cout<<st<<" existencias de "<<str<<"\n";
                 break;
             }     
         }
         return st;
     }
+    int stock(std::string articulo,int Deposito)
+    {
+        int i;
+        int st=-1;
+        if(Deposito>0&&Deposito<=5)
+        {
+            for(i=1;i<lista.getTamanio();i++)
+            {
+                Datos aux=lista.getDato(i);
+                std::string str=aux.getArticulo();
+                if(articulo==str)
+                {
+                    cout<<"Encontrado\n";
+                    switch (Deposito)
+                    {
+                        case 1:
+                            st=aux.getD1();
+                            break;
+                        case 2:
+                            st=aux.getD2();
+                            break;
+                        case 3:
+                            st=aux.getD3();
+                            break;
+                        case 4:
+                            st=aux.getD4();
+                            break;
+                        case 5:
+                            st=aux.getD5();
+                            break;
+                    }
+                    cout<<st<<" existencias de "<<str<<"\n";
+                    break;
+                }     
+            }
+        }
+        return st;
+    }
+
     };
 
 #endif
