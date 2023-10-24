@@ -2,8 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "HashMap/HashMap.h"
-#include "Datos/ClaseDATO.h"
 #include "ListaDatos/ListaDatos.h"
 //Esta funcion sirve para contar la cantidad de lineas(datos) del archivo
 /*
@@ -100,11 +98,8 @@ int stock(std::string articulo,Lista<Datos>lista)
     return st;
 }
 */
-void Mostrar(Lista<std::string>lista)
-{
-    for(int i=0;i<lista.getTamanio();i++)
-        cout<<lista.getDato(i)<<std::endl;
-}
+
+
 int main() {
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;

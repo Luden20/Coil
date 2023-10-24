@@ -3,8 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "Lista/Lista.h"
-#include "Datos/ClaseDATO.h"
+#include "../Lista/Lista.h"
+#include "../Datos/ClaseDATO.h"
 #include <string>
 using namespace std;
 
