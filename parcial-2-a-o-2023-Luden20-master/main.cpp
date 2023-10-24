@@ -80,27 +80,23 @@ Lista<std::string>max_stock(int n,Lista<Datos>lista)
     }
     return resultado;
 }
-int stock(std::string& articulo,Lista<Datos>lista)
+int stock(std::string articulo,Lista<Datos>lista)
 {
     int i;
     int st=-1;
-    for(i=0;i<lista.getTamanio();i++)
+    for(i=1;i<lista.getTamanio();i++)
     {
+        cout<<"Buscando\n";
         Datos aux=lista.getDato(i);
-        if(articulo==aux.getArticulo())
+        std::string str=aux.getArticulo();
+        cout<<str<<"\n";
+        if(articulo==str)
         {
             st=aux.getD1()+aux.getD2()+aux.getD3()+aux.getD4()+aux.getD5();
             break;
         }     
     }
-    if(st==-1)
-    {
-        cout<<"No encontrado\n";
-    }
-    else
-    {
-        cout<<"Encontrado\n";
-    }
+    cout<<st<<"\n";
     return st;
 }
 void Mostrar(Lista<std::string>lista)
@@ -114,11 +110,9 @@ int main() {
     begin = clock();
     int i;
     std::string NombreArchivo = "Inventariado Fisico .csv";
-    std::string NombreBusquedaStock = "BANQUETA TAPIZADA COST BCO  BASE PINTADA NEGRO";
+    std::string NombreBusquedaStock = "ANGULOS FIXSYSTEM";
     Lista<Datos>DatosGuardados=CreacionLista(NombreArchivo);
-    Lista<std::string>xd=min_stock(1,DatosGuardados);
     i=stock(NombreBusquedaStock,DatosGuardados);
-    //Mostrar(xd);
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
