@@ -26,7 +26,6 @@ public:
         D4 = 0;
         D5 = 0;
     }
-
     // Constructor con argumentos
     Datos(std::string Grupo, std::string CodigoBarras, std::string Articulo, int D1, int D2, int D3, int D4, int D5) {
         this->Grupo = Grupo;
