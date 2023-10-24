@@ -8,9 +8,9 @@
 //Esta funcion sirve para contar la cantidad de lineas(datos) del archivo
 Lista<Datos>CreacionLista(const std::string& NombreArchivo)
 {
+    setlocale(LC_ALL, "spanish");
     std::string linea,aux;
     char l = ',';
-    int i = 0;
     ifstream archivo(NombreArchivo);
     Lista<Datos> Lista; 
     std::getline(archivo,linea);
@@ -86,17 +86,14 @@ int stock(std::string articulo,Lista<Datos>lista)
     int st=-1;
     for(i=1;i<lista.getTamanio();i++)
     {
-        cout<<"Buscando\n";
         Datos aux=lista.getDato(i);
         std::string str=aux.getArticulo();
-        cout<<str<<"\n";
         if(articulo==str)
         {
             st=aux.getD1()+aux.getD2()+aux.getD3()+aux.getD4()+aux.getD5();
             break;
         }     
     }
-    cout<<st<<"\n";
     return st;
 }
 void Mostrar(Lista<std::string>lista)
@@ -109,10 +106,12 @@ int main() {
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
     int i;
-    std::string NombreArchivo = "Inventariado Fisico .csv";
+    std::string NombreArchivo = "Inventariado Fisico.csv";
     std::string NombreBusquedaStock = "ANGULOS FIXSYSTEM";
     Lista<Datos>DatosGuardados=CreacionLista(NombreArchivo);
-    i=stock(NombreBusquedaStock,DatosGuardados);
+    Datos p=DatosGuardados.getDato(21);
+    p.ver();
+    //i=stock(NombreBusquedaStock,DatosGuardados);
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
