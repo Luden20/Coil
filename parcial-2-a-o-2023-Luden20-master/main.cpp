@@ -5,7 +5,9 @@
 #include "HashMap/HashMap.h"
 #include "Lista/Lista.h"
 #include "Datos/ClaseDATO.h"
+#include "ListaDatos/ListaDatos.h"
 //Esta funcion sirve para contar la cantidad de lineas(datos) del archivo
+/*
 Lista<Datos>CreacionLista(const std::string& NombreArchivo)
 {
     setlocale(LC_ALL, "spanish");
@@ -98,6 +100,7 @@ int stock(std::string articulo,Lista<Datos>lista)
     }
     return st;
 }
+*/
 void Mostrar(Lista<std::string>lista)
 {
     for(int i=0;i<lista.getTamanio();i++)
@@ -110,10 +113,12 @@ int main() {
     int i;
     std::string NombreArchivo = "Inventariado Fisico.csv";
     std::string NombreBusquedaStock = "ANGULOS FIXSYSTEM";
-    Lista<Datos>DatosGuardados=CreacionLista(NombreArchivo);
-    Datos p=DatosGuardados.getDato(21);
-    p.ver();
-    i=stock(NombreBusquedaStock,DatosGuardados);
+    //Lista<Datos>DatosGuardados=CreacionLista(NombreArchivo);
+    //Datos p=DatosGuardados.getDato(21);
+    //p.ver();
+    //i=stock(NombreBusquedaStock,DatosGuardados);
+    ListaDatos DatosGuardados(NombreArchivo);
+    DatosGuardados.stock(NombreBusquedaStock);
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;

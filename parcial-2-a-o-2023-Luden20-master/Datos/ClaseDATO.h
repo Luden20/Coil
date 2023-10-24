@@ -1,5 +1,5 @@
-#ifndef PERSONA_H
-#define PERSONA_H
+#ifndef ClaseDATO
+#define ClaseDATO
 #include <string>
 using namespace std;
 
