@@ -62,6 +62,7 @@ Lista<std::string>min_stock(int n,Lista<Datos>lista)
             resultado.insertarUltimo(aux.getArticulo());
         }
     }
+    cout<<"Fin min_stock\n";
     return resultado;
 }
 Lista<std::string>max_stock(int n,Lista<Datos>lista)
@@ -79,22 +80,28 @@ Lista<std::string>max_stock(int n,Lista<Datos>lista)
     }
     return resultado;
 }
-int stock(const std::string& articulo,Lista<Datos>lista)
+int stock(std::string& articulo,Lista<Datos>lista)
 {
-    cout<<"calculando stock";
-    bool encontrado=false;
-    int i,stock=-1;
+    int i;
+    int st=-1;
     for(i=0;i<lista.getTamanio();i++)
     {
         Datos aux=lista.getDato(i);
         if(articulo==aux.getArticulo())
         {
-            encontrado=true;
-            stock=aux.getD1()+aux.getD2()+aux.getD3()+aux.getD4()+aux.getD5();
+            st=aux.getD1()+aux.getD2()+aux.getD3()+aux.getD4()+aux.getD5();
             break;
         }     
     }
-    return stock;
+    if(st==-1)
+    {
+        cout<<"No encontrado\n";
+    }
+    else
+    {
+        cout<<"Encontrado\n";
+    }
+    return st;
 }
 void Mostrar(Lista<std::string>lista)
 {
@@ -105,11 +112,12 @@ int main() {
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
+    int i;
     std::string NombreArchivo = "Inventariado Fisico .csv";
-    std::string NombreBusquedaStock = "GUIAS FIXSYSTEM DE 60 CM";
+    std::string NombreBusquedaStock = "BANQUETA TAPIZADA COST BCO  BASE PINTADA NEGRO";
     Lista<Datos>DatosGuardados=CreacionLista(NombreArchivo);
     Lista<std::string>xd=min_stock(1,DatosGuardados);
-    int st=stock(NombreBusquedaStock,DatosGuardados);
+    i=stock(NombreBusquedaStock,DatosGuardados);
     //Mostrar(xd);
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
