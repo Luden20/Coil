@@ -8,10 +8,10 @@ int main() {
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
     std::string NombreArchivo = "Inventariado Fisico.csv";
-    std::string NombreBusquedaStock = "ANGULOS FIXSYSTEM";
+    //std::string NombreBusquedaStock = "ANGULOS FIXSYSTEM";
     ListaDatos DatosGuardados(NombreArchivo);
-    Lista<std::string> Nombres=DatosGuardados.min_stock(90);
-    Nombres.print();    
+    //Lista<std::string> Nombres=DatosGuardados.min_stock(90);
+    //Nombres.print();    
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
