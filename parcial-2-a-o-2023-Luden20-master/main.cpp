@@ -10,8 +10,8 @@ int main() {
     begin = clock();
     std::string NombreArchivo = "Inventariado Fisico.csv";
     //std::string NombreBusquedaStock = "ANGULOS FIXSYSTEM";
-    ListaDatos DatosGuardados(NombreArchivo);
-    HashMapDatos HashDatos(NombreArchivo);
+    //ListaDatos DatosGuardados(NombreArchivo);
+    HashMapDatos Hash( NombreArchivo);
     //Lista<std::string> Nombres=DatosGuardados.min_stock(90);
     //Nombres.print();    
     clock_t end = clock();
