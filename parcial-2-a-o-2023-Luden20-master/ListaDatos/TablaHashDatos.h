@@ -20,7 +20,7 @@ public:
         char l = ',';
         ifstream archivo(NombreArchivo);
         int dim = ContarLineas(NombreArchivo);
-        TablaHash=<std::string, Datos>(dim);
+        TablaHash=HashMap<std::string, Datos>(dim);
         std::getline(archivo, linea); // Read and discard the header line
         while (getline(archivo, linea)) {
             std::stringstream stream(linea);
