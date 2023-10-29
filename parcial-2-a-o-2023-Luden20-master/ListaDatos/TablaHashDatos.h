@@ -11,14 +11,18 @@
 using namespace std;
 
 class HashMapDatos {
+private:
+    HashMap<int,Datos>tablaHash();
 public:
-    HashMapDatos(const std::string NombreArchivo) {
+    HashMapDatos(const std::string NombreArchivo)
+     {
         setlocale(LC_ALL, "spanish");
         std::string linea, aux;
         char l = ',';
+        int i=0;
         ifstream archivo(NombreArchivo);
         int dim = ContarLineas(NombreArchivo);
-        HashMap<int, Datos>Hash(dim);
+        HashMap<int, Datos>tablaHash(dim);
         std::getline(archivo, linea); // Read and discard the header line
         while (getline(archivo, linea)) {
             std::stringstream stream(linea);
@@ -55,9 +59,10 @@ public:
             }
 
             Datos aux(Grupo, CodigoBarras, Articulo, D1, D2, D3, D4, D5);
-            TablaHash.put(2, aux);
+            tablaHash.put(i, aux);
+            i++;
         }
-        cout << "Se termino la creacion\n";
+         cout << "Se termino la creacion\n";
     }
 
     int ContarLineas(const std::string &nombrearchivo) {
@@ -69,6 +74,10 @@ public:
         }
         archivo.close();
         return i;
+    }
+    void PruebaTabla(int clave)
+    {
+        Datos AUX=tablaHash.get(clave);
     }
 };
 
