@@ -9,13 +9,13 @@
 using namespace std;
 /*
 Notas
-Esta clase utiliza la clase lista que ya estaba previamente hecha y utiliza la clase Datos que esta en otro archivo
-Aqui se incluiran las funciones y metodos
+Quede en hacerlo en tabla hash, pero dado que no logro que funcione terminare por si acaso la
 */ 
 
 class ListaDatos {
 private:
     Lista<Datos> lista;
+    int total=0;
 public:
     ListaDatos(const std::string& NombreArchivo) {
         setlocale(LC_ALL, "spanish");
@@ -63,8 +63,8 @@ public:
             if (!d5.empty()) {
                 D5 = std::stoi(d5);
             }
-
             Datos aux(Grupo, CodigoBarras, Articulo, D1, D2, D3, D4, D5);
+            total+=aux.getTotal();
             lista.insertarUltimo(aux);
         }
         cout<<"Se termino la creacion\n";
@@ -93,24 +93,7 @@ public:
         for(i=0;i<lista.getTamanio();i++)
         {
             Datos aux=lista.getDato(i);
-            switch (Deposito)
-                    {
-                        case 1:
-                            tpa=aux.getD1();
-                            break;
-                        case 2:
-                            tpa=aux.getD2();
-                            break;
-                        case 3:
-                            tpa=aux.getD3();
-                            break;
-                        case 4:
-                            tpa=aux.getD4();
-                            break;
-                        case 5:
-                            tpa=aux.getD5();
-                            break;
-                    }
+            tpa=aux.getD(Deposito);
             if(tpa<=n)
             {
                 resultado.insertarUltimo(aux.getArticulo());
@@ -119,8 +102,6 @@ public:
         cout<<"Fin min_stock\n";
         return resultado;
     }
-
-
     Lista<std::string>max_stock(int n)
     {
         Lista<std::string>resultado;
@@ -167,24 +148,7 @@ public:
                 if(articulo==str)
                 {
                     cout<<"Encontrado\n";
-                    switch (Deposito)
-                    {
-                        case 1:
-                            st=aux.getD1();
-                            break;
-                        case 2:
-                            st=aux.getD2();
-                            break;
-                        case 3:
-                            st=aux.getD3();
-                            break;
-                        case 4:
-                            st=aux.getD4();
-                            break;
-                        case 5:
-                            st=aux.getD5();
-                            break;
-                    }
+                    st=aux.getD(Deposito);
                     cout<<st<<" existencias de "<<str<<"\n";
                     break;
                 }     
@@ -192,7 +156,14 @@ public:
         }
         return st;
     }
-
-    };
+    int total_art_dif()
+    {
+        return lista.getTamanio();
+    }
+    int total_art()
+    {
+        return total;
+    }
+};
 
 #endif

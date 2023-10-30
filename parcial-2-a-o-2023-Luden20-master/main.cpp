@@ -4,12 +4,13 @@
 #include <sstream>
 #include "ListaDatos/ListaDatos.h"
 #include "ListaDatos/TablaHashDatos.h"
-#include "HashMap/HashEntry.h"
+//#include "HashMap/HashEntry.h"
 #include "HashMap/HashMap.h"
 #include "Lista/Lista.h"
 #include "Datos/ClaseDATO.h"
 #include <string>
 #include <functional>
+/*
 int ContarLineas(const std::string &nombrearchivo) {
         std::string linea;
         int i = 0;
@@ -74,31 +75,75 @@ std::string linea, aux;
         cout<<"El total de "<<aux.getArticulo()<<" es "<<stock<<"\n";
         return stock;
     }
-
-int main() {
+*/
+void Prueba(std::string NombreArchivo)
+{
+    ListaDatos ListaD(NombreArchivo);
+    int tad=ListaD.total_art_dif();
+    int ta=ListaD.total_art();
+    Lista<std::string>MS=ListaD.min_stock(90);
+    Lista<std::string>MSD=ListaD.min_stock(30,2);
+    int st=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C");
+    int std=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C",3);
+    Lista<std::string>ms=ListaD.max_stock(45);
+    cout<<"total art dif"<<tad<<"\n";
+    cout<<"total art"<<ta<<"\n";
+    cout<<"Min stock\n";
+    MS.print();
+    cout<<"Min Stock por Deposito\n";
+    MSD.print();
+    cout<<"Stock de"<<st<<"\n";;
+    cout<<"Stock por deposito"<<std<<"\n";
+}
+void PruebaConTiempo()
+{
+    std::string NombreArchivo = "Inventariado Fisico.csv";
+    ListaDatos ListaD(NombreArchivo);
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
+    //Prueba(NombreArchivo);
+    int tad=ListaD.total_art_dif();
+    int ta=ListaD.total_art();
+    Lista<std::string>MS=ListaD.min_stock(90);
+    Lista<std::string>MSD=ListaD.min_stock(30,2);
+    int st=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C");
+    int std=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C",3);
+    Lista<std::string>ms=ListaD.max_stock(45);
+    cout<<"total art dif"<<tad<<"\n";
+    cout<<"total art"<<ta<<"\n";
+    cout<<"Min stock\n";
+    MS.print();
+    cout<<"Min Stock por Deposito\n";
+    MSD.print();
+    cout<<"Stock de"<<st<<"\n";;
+    cout<<"Stock por deposito"<<std<<"\n";
+    clock_t end = clock();
+    double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
+    std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
+}
+int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
-
-/*
-    // Crear una instancia de HashMap con claves de tipo int
-    HashMap<int,std::string> myHashMap(100);
-
-    // Agregar pares clave-valor a la tabla hash
-    myHashMap.put(42, "Valor1");
-    myHashMap.put(10, "Valor2");
-    myHashMap.put(5, "Valor3");
-
-    // Obtener valores a partir de las claves
-    std::cout << "Valor asociado a la clave 42: " << myHashMap.get(42) << std::endl;
-    std::cout << "Valor asociado a la clave 10: " << myHashMap.get(10) << std::endl;
-    std::cout << "Valor asociado a la clave 5: " << myHashMap.get(5) << std::endl;
-
-    //cout<<valor<<"\n";
-    //HashMap <std::string , Datos > hashTabla = CrearTabla(NombreArchivo);
-    //int st=stock("SOPAPA CESTILLO CUADRADA",hashTabla);
-    */
+    ListaDatos ListaD(NombreArchivo);
+    clock_t begin;
+    std::cout << "Comenzando a medir Tiempo\n" << std::endl;
+    begin = clock();
+    //Prueba(NombreArchivo);
+    int tad=ListaD.total_art_dif();
+    int ta=ListaD.total_art();
+    Lista<std::string>MS=ListaD.min_stock(90);
+    Lista<std::string>MSD=ListaD.min_stock(30,2);
+    int st=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C");
+    int std=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C",3);
+    Lista<std::string>ms=ListaD.max_stock(45);
+    cout<<"total art dif"<<tad<<"\n";
+    cout<<"total art"<<ta<<"\n";
+    cout<<"Min stock\n";
+    MS.print();
+    cout<<"Min Stock por Deposito\n";
+    MSD.print();
+    cout<<"Stock de"<<st<<"\n";;
+    cout<<"Stock por deposito"<<std<<"\n";
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
