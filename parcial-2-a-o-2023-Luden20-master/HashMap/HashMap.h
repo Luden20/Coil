@@ -43,6 +43,7 @@ HashMap<K, T>::HashMap(unsigned int k)
   }
   hashFuncP = hashFunc;
 }
+
 template <class K, class T>
 HashMap<K, T>::HashMap(unsigned int k, unsigned int (*fp)(K))
 {

@@ -80,12 +80,24 @@ int main() {
     begin = clock();
     std::string NombreArchivo = "Inventariado Fisico.csv";
 
-    HashMap<int, int> miMapa(10); 
-    miMapa.put(1, 42); 
-    miMapa.put(11, 67);
-    int valor = miMapa.get(11);
+/*
+    // Crear una instancia de HashMap con claves de tipo int
+    HashMap<int,std::string> myHashMap(100);
+
+    // Agregar pares clave-valor a la tabla hash
+    myHashMap.put(42, "Valor1");
+    myHashMap.put(10, "Valor2");
+    myHashMap.put(5, "Valor3");
+
+    // Obtener valores a partir de las claves
+    std::cout << "Valor asociado a la clave 42: " << myHashMap.get(42) << std::endl;
+    std::cout << "Valor asociado a la clave 10: " << myHashMap.get(10) << std::endl;
+    std::cout << "Valor asociado a la clave 5: " << myHashMap.get(5) << std::endl;
+
+    //cout<<valor<<"\n";
     //HashMap <std::string , Datos > hashTabla = CrearTabla(NombreArchivo);
     //int st=stock("SOPAPA CESTILLO CUADRADA",hashTabla);
+    */
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
