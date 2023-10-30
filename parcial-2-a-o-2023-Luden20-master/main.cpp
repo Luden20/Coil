@@ -83,7 +83,8 @@ int main() {
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
-    Lista <std::string> xd=ListaD.max_stock(10);
+    Lista <std::string> xd=ListaD.max_stock(10);//0.001
+    Lista <std::string>xad=ListaD.min_stock(90);//0.001
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
