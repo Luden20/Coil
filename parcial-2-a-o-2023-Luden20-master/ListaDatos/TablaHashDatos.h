@@ -12,7 +12,7 @@ using namespace std;
 
 class HashMapDatos {
 private:
-    HashMap<int,Datos>tablaHash();
+    HashMap<int, Datos> tablaHash;
 public:
     HashMapDatos(const std::string NombreArchivo)
      {
@@ -28,7 +28,6 @@ public:
             std::stringstream stream(linea);
             std::string Grupo, CodigoBarras, Articulo, d1, d2, d3, d4, d5;
             int D1 = 0, D2 = 0, D3 = 0, D4 = 0, D5 = 0;
-
             std::getline(stream, Grupo, l);
             if (Grupo != "") {
                 aux = Grupo;
@@ -41,7 +40,6 @@ public:
             std::getline(stream, d3, l);
             std::getline(stream, d4, l);
             std::getline(stream, d5, l);
-
             if (!d1.empty()) {
                 D1 = std::stoi(d1);
             }

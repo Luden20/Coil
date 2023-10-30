@@ -45,6 +45,18 @@ HashMap<K, T>::HashMap(unsigned int k)
 }
 
 template <class K, class T>
+HashMap<K, T>::HashMap()
+{
+  tamanio = 0;
+  tabla = new HashEntry<K, T> *[tamanio];
+  for (int i = 0; i < tamanio; i++)
+  {
+    tabla[i] = NULL;
+  }
+  hashFuncP = hashFunc;
+}
+
+template <class K, class T>
 HashMap<K, T>::HashMap(unsigned int k, unsigned int (*fp)(K))
 {
   tamanio = k;
