@@ -18,6 +18,7 @@ private:
     int D3;
     int D4;
     int D5;
+    int total;
 
 public:
     // Constructor sin argumentos
@@ -30,6 +31,7 @@ public:
         D3 = 0;
         D4 = 0;
         D5 = 0;
+        total=0;
     }
     // Constructor con argumentos
     Datos(std::string Grupo, std::string CodigoBarras, std::string Articulo, int D1, int D2, int D3, int D4, int D5) {
@@ -41,6 +43,7 @@ public:
         this->D3 = D3;
         this->D4 = D4;
         this->D5 = D5;
+        this->total=D1+D2+D3+D4+D5;
     }
     void ver() {
         std::cout << "Grupo: " << Grupo << std::endl;
@@ -58,6 +61,30 @@ public:
     int getD3(){return D3;}
     int getD4(){return D4;}
     int getD5(){return D5;}
+    int getTotal(){return D5;}
+    int getD(int deposito)
+    {
+        int total;
+        switch (deposito)
+                    {
+                        case 1:
+                            total=D1;
+                            break;
+                        case 2:
+                            total=D2;
+                            break;
+                        case 3:
+                            total=D3;
+                            break;
+                        case 4:
+                            total=D4;
+                            break;
+                        case 5:
+                            total=D5;
+                            break;
+                    }
+        return total;
+    }
     std::string getGrupo(){return Grupo;}
     std::string getCodigoBarras(){return CodigoBarras;}
     std::string getArticulo(){return Articulo;}
