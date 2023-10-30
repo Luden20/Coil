@@ -9,6 +9,7 @@
 #include "Lista/Lista.h"
 #include "Datos/ClaseDATO.h"
 #include <string>
+#include <functional>
 int ContarLineas(const std::string &nombrearchivo) {
         std::string linea;
         int i = 0;
