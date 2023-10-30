@@ -76,58 +76,14 @@ std::string linea, aux;
         return stock;
     }
 */
-void Prueba(std::string NombreArchivo)
-{
-    ListaDatos ListaD(NombreArchivo);
-    int tad=ListaD.total_art_dif();
-    int ta=ListaD.total_art();
-    Lista<std::string>MS=ListaD.min_stock(90);
-    Lista<std::string>MSD=ListaD.min_stock(30,2);
-    int st=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C");
-    int std=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C",3);
-    Lista<std::string>ms=ListaD.max_stock(45);
-    cout<<"total art dif"<<tad<<"\n";
-    cout<<"total art"<<ta<<"\n";
-    cout<<"Min stock\n";
-    MS.print();
-    cout<<"Min Stock por Deposito\n";
-    MSD.print();
-    cout<<"Stock de"<<st<<"\n";;
-    cout<<"Stock por deposito"<<std<<"\n";
-}
-void PruebaConTiempo()
-{
-    std::string NombreArchivo = "Inventariado Fisico.csv";
-    ListaDatos ListaD(NombreArchivo);
-    clock_t begin;
-    std::cout << "Comenzando a medir Tiempo\n" << std::endl;
-    begin = clock();
-    //Prueba(NombreArchivo);
-    int tad=ListaD.total_art_dif();
-    int ta=ListaD.total_art();
-    Lista<std::string>MS=ListaD.min_stock(90);
-    Lista<std::string>MSD=ListaD.min_stock(30,2);
-    int st=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C");
-    int std=ListaD.stock("SECADOR DE MANO PARED TURBOAR MODELO M-798C",3);
-    Lista<std::string>ms=ListaD.max_stock(45);
-    cout<<"total art dif"<<tad<<"\n";
-    cout<<"total art"<<ta<<"\n";
-    cout<<"Min stock\n";
-    MS.print();
-    cout<<"Min Stock por Deposito\n";
-    MSD.print();
-    cout<<"Stock de"<<st<<"\n";;
-    cout<<"Stock por deposito"<<std<<"\n";
-    clock_t end = clock();
-    double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
-    std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
-}
+
 int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
     ListaDatos ListaD(NombreArchivo);
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
+    Lista <std::string> xd=ListaD.max_stock(10);
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
