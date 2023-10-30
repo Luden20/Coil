@@ -79,8 +79,13 @@ int main() {
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
     std::string NombreArchivo = "Inventariado Fisico.csv";
-    HashMap <std::string , Datos > hashTabla = CrearTabla(NombreArchivo);
-    int st=stock("SOPAPA CESTILLO CUADRADA",hashTabla);
+
+    HashMap<int, int> miMapa(10); 
+    miMapa.put(1, 42); 
+    miMapa.put(11, 67);
+    int valor = miMapa.get(11);
+    //HashMap <std::string , Datos > hashTabla = CrearTabla(NombreArchivo);
+    //int st=stock("SOPAPA CESTILLO CUADRADA",hashTabla);
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
