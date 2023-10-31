@@ -85,6 +85,9 @@ int main() {
     begin = clock();
     Lista <std::string> xd=ListaD.max_stock(10);//0.001
     Lista <std::string>xad=ListaD.min_stock(90);//0.001
+    Lista <std::string>xad=ListaD.min_stock(2,1);//0.001
+    int L=ListaD.total_art();
+    int xd=ListaD.total_art_dif();
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;

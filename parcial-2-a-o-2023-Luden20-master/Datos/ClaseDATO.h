@@ -61,7 +61,7 @@ public:
     int getD3(){return D3;}
     int getD4(){return D4;}
     int getD5(){return D5;}
-    int getTotal(){return D5;}
+    int getTotal(){int i=D1+D2+D3+D4+D5;return i ;}
     int getD(int deposito)
     {
         int total;
