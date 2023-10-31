@@ -76,7 +76,10 @@ std::string linea, aux;
         return stock;
     }
 */
-
+void Programa()
+{
+    cout<<"Ingrese";
+}
 int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
     ListaDatos ListaD(NombreArchivo);
@@ -84,10 +87,11 @@ int main() {
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
     Lista <std::string> xd=ListaD.max_stock(10);//0.001
-    Lista <std::string>xad=ListaD.min_stock(90);//0.001
+    Lista <std::string>xadl=ListaD.min_stock(90);//0.001
     Lista <std::string>xad=ListaD.min_stock(2,1);//0.001
     int L=ListaD.total_art();
-    int xd=ListaD.total_art_dif();
+    int xdasda=ListaD.total_art_dif();
+    xd.print();
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
