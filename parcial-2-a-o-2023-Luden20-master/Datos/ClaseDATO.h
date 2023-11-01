@@ -23,9 +23,9 @@ private:
 public:
     // Constructor sin argumentos
     Datos() {
-        Grupo = "NULL";
+        Grupo = "";
         CodigoBarras = "";
-        Articulo = "";
+        Articulo = "NULL";
         D1 = 0;
         D2 = 0;
         D3 = 0;
@@ -81,7 +81,7 @@ public:
     bool Vacio()
     {
         bool r=false;
-        if(Grupo=="NULL")
+        if(Articulo=="NULL")
         {
             r=true;
         }

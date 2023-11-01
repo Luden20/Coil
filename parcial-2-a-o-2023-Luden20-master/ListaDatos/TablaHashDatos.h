@@ -37,7 +37,7 @@ class TablaHashDatos{
         }
         void InsertarDatoPrincipal(int pos,Datos dato)
         {
-            //cout<<"Principal "<<pos<<" "<<dato.getArticulo()<<"\n";
+            cout<<"Principal se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaPrincipal[pos].getArticulo()<<"\n";
             TablaPrincipal.insert(TablaPrincipal.begin()+pos,dato);
             ocupadosPrincipal++;
         }
@@ -45,12 +45,12 @@ class TablaHashDatos{
         {
             if(TablaSecundaria[pos].Vacio())
             {
-                //cout<<"Secundario "<<pos<<" "<<dato.getArticulo()<<"\n";
+                cout<<"Secundario se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaSecundaria[pos].getArticulo()<<"\n";
                 TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
             }
             else
             {
-                while(!TablaSecundaria[pos].Vacio())
+                while(TablaSecundaria[pos].Vacio()!=true)
                 {
                     pos++;
                     if(pos==dim)
@@ -58,7 +58,7 @@ class TablaHashDatos{
                         pos=0;
                     }
                 }
-                //cout<<"Secundario "<<pos<<" "<<dato.getArticulo()<<"\n";
+                cout<<"Secundario se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaSecundaria[pos].getArticulo()<<"\n";
                 TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
             }
             ocupadosSecundarios++;
@@ -66,7 +66,6 @@ class TablaHashDatos{
         void IngresarDato(Datos dato)
         {
             int clave=HashP(dato.getArticulo());
-            std::string d=TablaPrincipal[clave].getArticulo();
             if(TablaPrincipal[clave].Vacio())//Esta vacio y puedo ingresar
             {
                 InsertarDatoPrincipal(clave,dato);
@@ -83,7 +82,6 @@ class TablaHashDatos{
         }
         void LlenadoDatos(std::string NombreArchivo)
         {
-            cout<<"creando";
             setlocale(LC_ALL, "spanish");
             std::string linea, aux;
             char l = ',';
@@ -123,32 +121,86 @@ class TablaHashDatos{
                 Datos aux(Grupo, CodigoBarras, Articulo, D1, D2, D3, D4, D5);
                 IngresarDato(aux);
             }
-            cout<<"Se termino la creacion\n";
+            cout<<"Se termino la creacion\n\n\n\n\n\n";
             VerOcupaciones();
+        }
+        void Ver()
+        {
+            int c=0;
+            int i=0;
+            for(i;i<dim;i++)
+            {
+                Datos v=TablaPrincipal[i];
+                v.ver();
+                //if(!TablaPrincipal[i].Vacio())
+                //{
+                  //  cout<<i<<" Principal "<<TablaPrincipal[i].getArticulo()<<"\n";
+                    //c++;
+                //}
+            }
+            i=0;
+            for(i;i<dim;i++)
+            {
+                Datos vs=TablaPrincipal[i];
+                //vs.ver();
+                //if(!TablaSecundaria[i].Vacio())
+                //{
+                 //   cout<<i<<" Secundaria "<<TablaSecundaria[i].getArticulo()<<"\n";
+                  //  c++;
+                //}
+            }
+            cout<<c<<" datos\n";
         }
         Datos Busqueda(std::string Buscado)
         {
+            int pasos=0;
             int pos=HashP(Buscado);
+            int ipos=pos;
             Datos R;
+            cout<<"Se busco en"<<pos<<" en la tb1 donde esta "<<TablaPrincipal[pos].getArticulo()<<"\n";
             if(TablaPrincipal[pos].getArticulo()==Buscado)
             {
+                cout<<"Se encontro en la tabla 1 en "<<pos<<" \n";
                 //Lo encontre a la primera
                 R=TablaPrincipal[pos];
+                pasos++;
             }
             else
             {
-                //No esta en la principal
-                while(TablaSecundaria[pos].getArticulo()!=Buscado)
+                cout<<"Se buscara en la tabla 2\n";
+                if(TablaSecundaria[pos].getArticulo()==Buscado)
                 {
-                    cout<<"Buscando\n";
-                    pos++;
-                    if(pos==dim)
+                    cout<<"Se encontro en la tabla 2 en "<<pos<<" \n";
+                    R=TablaSecundaria[pos];
+                    pasos++;
+                }
+                else
+                {
+                    pasos++;
+                    while(TablaSecundaria[pos].getArticulo()!=Buscado)
                     {
-                        pos=0;
+                        cout<<"Se busco en"<<pos<<" en la tb2\n";
+                        pasos++;
+                        if(TablaSecundaria[pos].getArticulo()==Buscado)
+                        {
+                            cout<<"Se encontro en la tabla 2 en "<<pos<<" \n";
+                            R=TablaSecundaria[pos];
+                        }
+                        pos++;
+                        if(pos==dim)
+                        {
+                            pos=0;
+                        }
+                        if(pos==ipos)
+                        {
+                            cout<<"No se encontro \n";
+                            break;
+                        }
                     }
                 }
-                R=TablaSecundaria[pos];
             }
+            cout<<"Pasos:"<<pasos<<"\n";
+            return R;
         }
 };
 #endif

@@ -25,6 +25,9 @@ int ContarLineas(const std::string &nombrearchivo) {
 
 int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
+    int l=ContarLineas(NombreArchivo);
+    TablaHashDatos thd(l);
+    thd.LlenadoDatos(NombreArchivo);
     //ListaDatos ListaD(NombreArchivo);
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
@@ -42,12 +45,10 @@ int main() {
     aux.ver();
     cout<<"Ver";
     */
-    int l=ContarLineas(NombreArchivo);
-    TablaHashDatos thd(l);
-    thd.LlenadoDatos(NombreArchivo);
     //Datos prueba=thd.Busqueda("PILETA DE VIDRIO CUADRADA NARANJA");
-    Datos prueba=thd.Busqueda("PILETA ACERO INOX ZZ52");
-    prueba.ver();
+    Datos prueba=thd.Busqueda("BANQUETA LAQUEADA BASE PINTADA AS/RS BLANCA");//116 Principal
+    //ESCURREPLATOS ALACENA 860
+    //thd.Ver();
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
