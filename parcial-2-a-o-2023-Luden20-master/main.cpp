@@ -22,7 +22,21 @@ int ContarLineas(const std::string &nombrearchivo) {
         archivo.close();
         return i;
     }
-
+int HashP(std::string st)
+        {
+            int clave = 0;
+            for (int i = 0; i < st.length(); i++)
+            {
+                char c = st[i];
+                if (c != '(' && c != ')')
+                {
+                    clave += static_cast<int>(c) * (i + 1); // Multiplicar por la posición
+                }
+            }
+            clave = clave % 232;
+            cout<<clave<<"\n";
+            return clave;
+        }
 int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
     int l=ContarLineas(NombreArchivo);
@@ -46,7 +60,8 @@ int main() {
     cout<<"Ver";
     */
     //Datos prueba=thd.Busqueda("PILETA DE VIDRIO CUADRADA NARANJA");
-    Datos prueba=thd.Busqueda("BANQUETA LAQUEADA BASE PINTADA AS/RS BLANCA");//116 Principal
+    //int posi=HashP("PILETA C. CERART MICHEL  BCA EMBUTIR");
+    Datos prueba=thd.Busqueda("PILETA FERRUM ARIANNA BLANCA");
     //ESCURREPLATOS ALACENA 860
     //thd.Ver();
     clock_t end = clock();

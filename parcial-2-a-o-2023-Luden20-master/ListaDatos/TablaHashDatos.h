@@ -23,54 +23,59 @@ class TablaHashDatos{
             TablaSecundaria.resize(size);
         }
         int HashP(std::string st)
-        {   
+        {
             int clave = 0;
-            for (char c : st)
+            for (int i = 0; i < st.length(); i++)
             {
+                char c = st[i];
                 if (c != '(' && c != ')')
                 {
-                    clave += static_cast<int>(c);
+                    clave += static_cast<int>(c) * (i + 1); // Multiplicar por la posición
                 }
             }
-            clave = clave % 232; 
+            clave = clave % 232;
             return clave;
         }
         void InsertarDatoPrincipal(int pos,Datos dato)
         {
-            cout<<"Principal se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaPrincipal[pos].getArticulo()<<"\n";
-            TablaPrincipal.insert(TablaPrincipal.begin()+pos,dato);
+            //cout<<"Principal se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaPrincipal[pos].getArticulo()<<"\n";
+            //TablaPrincipal.insert(TablaPrincipal.begin()+pos,dato);
+            TablaPrincipal[pos]=dato;
             ocupadosPrincipal++;
         }
         void InsertarDatosSecundaria(int pos,Datos dato)
         {
             if(TablaSecundaria[pos].Vacio())
             {
-                cout<<"Secundario se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaSecundaria[pos].getArticulo()<<"\n";
-                TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
+               // cout<<"Secundario se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaSecundaria[pos].getArticulo()<<"\n";
+                //TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
+                TablaSecundaria[pos] = dato;
             }
-            else
+            else if(!TablaSecundaria[pos].Vacio())
             {
                 while(TablaSecundaria[pos].Vacio()!=true)
                 {
                     pos++;
-                    if(pos==dim)
+                    if(pos==dim-1)
                     {
                         pos=0;
                     }
                 }
-                cout<<"Secundario se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaSecundaria[pos].getArticulo()<<"\n";
-                TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
+                //cout<<"Secundario se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaSecundaria[pos].getArticulo()<<"\n";
+                //TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
+                TablaSecundaria[pos] = dato;
             }
             ocupadosSecundarios++;
         }
         void IngresarDato(Datos dato)
         {
-            int clave=HashP(dato.getArticulo());
+            std::string articulo=dato.getArticulo();
+            int clave=HashP(articulo);
             if(TablaPrincipal[clave].Vacio())//Esta vacio y puedo ingresar
             {
                 InsertarDatoPrincipal(clave,dato);
             }
-            else//Esta lleno y devo mandar a la secundaria
+            else if(!TablaPrincipal[clave].Vacio())//Esta lleno y devo mandar a la secundaria
             {         
                 InsertarDatosSecundaria(clave,dato);       
             }
@@ -123,6 +128,32 @@ class TablaHashDatos{
             }
             cout<<"Se termino la creacion\n\n\n\n\n\n";
             VerOcupaciones();
+        }
+        void BusquedaForsada1(std::string buscado)
+        {
+            int i=0,r=-1;
+            for(i;i<dim;i++)
+            {
+                if(buscado==TablaPrincipal[i].getArticulo())
+                {
+                    r=i;
+                    break;
+                }
+            }
+            cout<<r<<" posicion\n";
+        }
+        void BusquedaForsada2(std::string buscado)
+        {
+            int i=0,r=-1;
+            for(i;i<dim;i++)
+            {
+                if(buscado==TablaSecundaria[i].getArticulo())
+                {
+                    r=i;
+                    break;
+                }
+            }
+            cout<<r<<" posicion\n";
         }
         void Ver()
         {
@@ -187,7 +218,7 @@ class TablaHashDatos{
                             R=TablaSecundaria[pos];
                         }
                         pos++;
-                        if(pos==dim)
+                        if(pos==dim-1)
                         {
                             pos=0;
                         }
