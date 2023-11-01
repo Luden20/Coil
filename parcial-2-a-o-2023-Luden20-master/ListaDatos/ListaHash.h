@@ -28,31 +28,6 @@ class ListaHash{
                 clave = clave % 232;
                 return clave;
             }
-        int PosOrdenada(int clave)
-        {
-            for(int i=0;i<ListaH.getTamanio();i++)
-            {
-                ListaClave aux=ListaH.getDato(i);
-                if(aux.getClave()>=clave)
-                {
-                    return i;
-                }
-            }
-            return ListaH.getTamanio();
-        }
-        void CrearListaClave(int clave)//Esto se hace si no existe una lista con la clave
-        {
-            ListaClave aux(clave);
-            int pos=PosOrdenada(clave);
-            if(pos<ListaH.getTamanio())
-            {
-            ListaH.insertar(pos,aux);
-            }
-            else
-            {
-                ListaH.insertarUltimo(aux);
-            }
-        }
         ListaClave Buscar(int clave)//Es una busqueda provisional, luego hare una mejor con interpolacion
         {
             cout<<"Se esta buscando \n";
@@ -89,8 +64,6 @@ class ListaHash{
         ListaHash(std::string NombreArchivo)
         {
             cout<<"comenzando a crear..\n";
-            ListaClave au;
-            ListaH.insertar(0,au);
              setlocale(LC_ALL, "spanish");
             std::string linea, aux;
             char l = ',';

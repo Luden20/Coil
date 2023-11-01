@@ -1,7 +1,6 @@
 #ifndef ClaseDATO
 #define ClaseDATO
 #include <string>
-using namespace std;
 /*
 Clase Dato
 Sirve para guardar la informacion de cada linea
