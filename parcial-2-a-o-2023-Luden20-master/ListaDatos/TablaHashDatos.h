@@ -2,25 +2,69 @@
 #define HASH_H
 #include <vector>
 #include "../Datos/ClaseDATO.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <functional>
+#include <vector>
 class TablaHashDatos{
     private:
         std::vector<Datos>TablaPrincipal;
         std::vector<Datos>TablaSecundaria;
         int contadorPrincipal=0;
         int contadorSecundario=0;
+        int ocupadosPrincipal=0;
+        int ocupadosSecundarios=0;
     public:
         TablaHashDatos(int size)
         {
             TablaPrincipal.resize(size);
             TablaSecundaria.resize(size);
         }
+        int HashP(std::string st)
+        {   
+            int clave = 0;
+            for (char c : st)
+            {
+                if (c != '(' && c != ')')
+                {
+                    clave += static_cast<int>(c);
+                }
+            }
+            clave = clave % 232; 
+            return clave;
+        }
         void InsertarDatoPrincipal(int pos,Datos dato)
         {
+            cout<<"Principal "<<pos<<dato.getArticulo()<<"\n";
             TablaPrincipal.insert(TablaPrincipal.begin()+pos,dato);
+            ocupadosPrincipal++;
         }
         void InsertarDatosSecundaria(int pos,Datos dato)
         {
-            TablaPrincipal.insert(TablaPrincipal.begin()+pos,dato);
+            cout<<"Secundario "<<contadorSecundario<<dato.getArticulo()<<"\n";
+            TablaSecundaria.insert(TablaPrincipal.begin()+pos,dato);
+            contadorSecundario++;
+            ocupadosSecundarios++;
+        }
+        void IngresarDato(Datos dato)
+        {
+            int clave=HashP(dato.getArticulo());
+            std::string d=TablaPrincipal[clave].getArticulo();
+            if(TablaPrincipal[clave].Vacio())//Esta vacio y puedo ingresar
+            {
+                InsertarDatoPrincipal(clave,dato);
+            }
+            else//Esta lleno y devo mandar a la secundaria
+            {         
+                InsertarDatosSecundaria(contadorSecundario,dato);       
+            }
+        }
+        void VerOcupaciones()
+        {
+            cout<<"Principal:"<<ocupadosPrincipal<<"\n";
+            cout<<"Secundario:"<<ocupadosSecundarios<<"\n";
         }
         void LlenadoDatos(std::string NombreArchivo)
         {
@@ -61,9 +105,26 @@ class TablaHashDatos{
                     D5 = std::stoi(d5);
                 }
                 Datos aux(Grupo, CodigoBarras, Articulo, D1, D2, D3, D4, D5);
+                IngresarDato(aux);
             }
             cout<<"Se termino la creacion\n";
+            VerOcupaciones();
         }
+        /*
+        void ObtenerDato(std::string ArticuloBuscado)
+        {
+            int PC=HashP(ArticuloBuscado);
+            std::string encontrado=TablaPrincipal[PC].getArticulo();
+            if(encontrado==ArticuloBuscado)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        */
 
 
 };

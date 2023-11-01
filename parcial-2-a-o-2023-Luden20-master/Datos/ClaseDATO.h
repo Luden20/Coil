@@ -91,7 +91,7 @@ public:
     bool Vacio()
     {
         bool r=false;
-        if(Articulo=="NULL")
+        if(Grupo=="NULL")
         {
             r=true;
         }
