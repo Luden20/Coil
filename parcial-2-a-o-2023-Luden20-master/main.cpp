@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include "ListaDatos/ListaDatos.h"
+#include "ListaDatos/ListaHash.h"
 #include "ListaDatos/TablaHashDatos.h"
 //#include "HashMap/HashEntry.h"
 #include "HashMap/HashMap.h"
@@ -39,9 +40,9 @@ int HashP(std::string st)
         }
 int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
-    int l=ContarLineas(NombreArchivo);
-    TablaHashDatos thd(l);
-    thd.LlenadoDatos(NombreArchivo);
+    //int l=ContarLineas(NombreArchivo);
+    //TablaHashDatos thd(l);
+    //thd.LlenadoDatos(NombreArchivo);
     //ListaDatos ListaD(NombreArchivo);
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
@@ -61,9 +62,10 @@ int main() {
     */
     //Datos prueba=thd.Busqueda("PILETA DE VIDRIO CUADRADA NARANJA");
     //int posi=HashP("PILETA C. CERART MICHEL  BCA EMBUTIR");
-    Datos prueba=thd.Busqueda("PILETA FERRUM ARIANNA BLANCA");
+    //Datos prueba=thd.Busqueda("PILETA FERRUM ARIANNA BLANCA");
     //ESCURREPLATOS ALACENA 860
     //thd.Ver();
+    ListaHash ListaH(NombreArchivo);
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;

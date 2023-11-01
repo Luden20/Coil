@@ -1,5 +1,5 @@
-#ifndef HASH_H
-#define HASH_H
+#ifndef NODOLISTA_H
+#define NODOLISTA_H
 #include <vector>
 #include "../Lista/Lista.h"
 #include "../Datos/ClaseDATO.h"
@@ -18,9 +18,22 @@ class ListaClave{
         {
             this->clave=clave;
         }
+        ListaClave(int clave,Datos dato)
+        {
+            this->clave=clave;
+            lista.insertarUltimo(dato);
+        }
+        ListaClave()
+        {
+            this->clave=-1;
+        }
         void Insertar(Datos dato)
         {
             lista.insertarUltimo(dato);
+        }
+        int getClave()
+        {
+            return clave;
         }
         Datos Busqueda(std::string buscado)
         {
