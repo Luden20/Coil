@@ -10,7 +10,6 @@ private:
   unsigned int tamanio;
 
   static unsigned int hashFunc(K clave);
-
   unsigned int (*hashFuncP)(K clave);
 
 public:

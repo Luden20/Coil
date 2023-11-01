@@ -23,7 +23,7 @@ private:
 public:
     // Constructor sin argumentos
     Datos() {
-        Grupo = "";
+        Grupo = "NULL";
         CodigoBarras = "";
         Articulo = "";
         D1 = 0;
@@ -88,6 +88,15 @@ public:
     std::string getGrupo(){return Grupo;}
     std::string getCodigoBarras(){return CodigoBarras;}
     std::string getArticulo(){return Articulo;}
+    bool Vacio()
+    {
+        bool r=false;
+        if(Articulo=="NULL")
+        {
+            r=true;
+        }
+        return r;
+    }
 };
 
 #endif

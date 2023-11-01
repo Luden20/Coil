@@ -22,14 +22,11 @@ public:
         std::string linea, aux;
         char l = ',';
         ifstream archivo(NombreArchivo);
-        
         if (!archivo.is_open()) {
             cerr << "Error: Could not open file " << NombreArchivo << endl;
             return;
         }
-        
         std::getline(archivo, linea); // Read and discard the header line
-
         while (getline(archivo, linea)) {
             std::stringstream stream(linea);
             std::string Grupo, CodigoBarras, Articulo, d1, d2, d3, d4, d5;

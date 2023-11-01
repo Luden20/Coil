@@ -3,13 +3,14 @@
 #include <fstream>
 #include <sstream>
 #include "ListaDatos/ListaDatos.h"
-#include "ListaDatos/TablaHashDatos.h"
+//#include "ListaDatos/TablaHashDatos.h"
 //#include "HashMap/HashEntry.h"
 #include "HashMap/HashMap.h"
 #include "Lista/Lista.h"
 #include "Datos/ClaseDATO.h"
 #include <string>
 #include <functional>
+#include <vector>
 
 int ContarLineas(const std::string &nombrearchivo) {
         std::string linea;
@@ -86,26 +87,33 @@ HashMap<int, Datos>ConstruirTabla(const std::string NombreArchivo)
          cout << "Se termino la creacion\n";
          return tablaHash;
     }
-void Programa()
-{
-    cout<<"Ingrese";
-}
 int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
     //ListaDatos ListaD(NombreArchivo);
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
-    /*
-    Lista <std::string> xd=ListaD.max_stock(10);//0.001
-    Lista <std::string>xadl=ListaD.min_stock(90);//0.001
-    Lista <std::string>xad=ListaD.min_stock(2,1);//0.001
-    xd.print();
-    int L=ListaD.total_art();
-    int xdasda=ListaD.total_art_dif();
-    xd.print();
-    */
+    //Lista <std::string> xd=ListaD.max_stock(10);//0.001
+    //Lista <std::string>xadl=ListaD.min_stock(90);//0.001
+   // Lista <std::string>xad=ListaD.min_stock(2,1);//0.001
+    //xd.print();
+    //int L=ListaD.total_art();
+    //int xdasda=ListaD.total_art_dif();
+   // xd.print();
+   /*
     HashMap<int, Datos>tahs=ConstruirTabla(NombreArchivo);
+    Datos aux=tahs.get(91);
+    aux.ver();
+    cout<<"Ver";
+    */
+   std::vector<Datos> TablaPrincipal;
+   TablaPrincipal.resize(3);
+
+// Acceder a la posición 0 del vector
+    Datos elemento = TablaPrincipal[0];
+    elemento.ver();
+
+
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
