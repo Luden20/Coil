@@ -38,8 +38,6 @@ class TablaHashDatos{
         }
         void InsertarDatoPrincipal(int pos,Datos dato)
         {
-            //cout<<"Principal se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaPrincipal[pos].getArticulo()<<"\n";
-            //TablaPrincipal.insert(TablaPrincipal.begin()+pos,dato);
             TablaPrincipal[pos]=dato;
             ocupadosPrincipal++;
         }
@@ -47,8 +45,6 @@ class TablaHashDatos{
         {
             if(TablaSecundaria[pos].Vacio())
             {
-               // cout<<"Secundario se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaSecundaria[pos].getArticulo()<<"\n";
-                //TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
                 TablaSecundaria[pos] = dato;
             }
             else if(!TablaSecundaria[pos].Vacio())
@@ -61,8 +57,6 @@ class TablaHashDatos{
                         pos=0;
                     }
                 }
-                //cout<<"Secundario se va a poner "<<pos<<"el dato"<<dato.getArticulo()<<" donde antes estaba "<<TablaSecundaria[pos].getArticulo()<<"\n";
-                //TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
                 TablaSecundaria[pos] = dato;
             }
             ocupadosSecundarios++;
@@ -155,33 +149,6 @@ class TablaHashDatos{
             }
             cout<<r<<" posicion\n";
         }
-        void Ver()
-        {
-            int c=0;
-            int i=0;
-            for(i;i<dim;i++)
-            {
-                Datos v=TablaPrincipal[i];
-                v.ver();
-                //if(!TablaPrincipal[i].Vacio())
-                //{
-                  //  cout<<i<<" Principal "<<TablaPrincipal[i].getArticulo()<<"\n";
-                    //c++;
-                //}
-            }
-            i=0;
-            for(i;i<dim;i++)
-            {
-                Datos vs=TablaPrincipal[i];
-                //vs.ver();
-                //if(!TablaSecundaria[i].Vacio())
-                //{
-                 //   cout<<i<<" Secundaria "<<TablaSecundaria[i].getArticulo()<<"\n";
-                  //  c++;
-                //}
-            }
-            cout<<c<<" datos\n";
-        }
         Datos Busqueda(std::string Buscado)
         {
             int pasos=0;
@@ -232,6 +199,26 @@ class TablaHashDatos{
             }
             cout<<"Pasos:"<<pasos<<"\n";
             return R;
+        }
+        int stock(std::string nombre_articulo)
+        {
+            int s=-1;
+            Datos buscado=Busqueda(nombre_articulo);
+            if(buscado.getArticulo()!="NULL")
+            {
+                s=buscado.getTotal();
+            }
+            return s;
+        }
+        int stock(std::string nombre_articulo,int deposito)
+        {
+            int s=-1;
+            Datos buscado=Busqueda(nombre_articulo);
+            if(buscado.getArticulo()!="NULL")
+            {
+                s=buscado.getD(deposito);
+            }
+            return s;
         }
 };
 #endif
