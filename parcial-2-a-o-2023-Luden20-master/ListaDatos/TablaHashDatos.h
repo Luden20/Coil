@@ -12,13 +12,13 @@ class TablaHashDatos{
     private:
         std::vector<Datos>TablaPrincipal;
         std::vector<Datos>TablaSecundaria;
-        int contadorPrincipal=0;
-        int contadorSecundario=0;
         int ocupadosPrincipal=0;
         int ocupadosSecundarios=0;
+        int dim;
     public:
         TablaHashDatos(int size)
         {
+            this->dim = size;
             TablaPrincipal.resize(size);
             TablaSecundaria.resize(size);
         }
@@ -37,15 +37,30 @@ class TablaHashDatos{
         }
         void InsertarDatoPrincipal(int pos,Datos dato)
         {
-            cout<<"Principal "<<pos<<dato.getArticulo()<<"\n";
+            cout<<"Principal "<<pos<<" "<<dato.getArticulo()<<"\n";
             TablaPrincipal.insert(TablaPrincipal.begin()+pos,dato);
             ocupadosPrincipal++;
         }
         void InsertarDatosSecundaria(int pos,Datos dato)
         {
-            cout<<"Secundario "<<contadorSecundario<<dato.getArticulo()<<"\n";
-            TablaSecundaria.insert(TablaPrincipal.begin()+pos,dato);
-            contadorSecundario++;
+            if(TablaSecundaria[pos].Vacio())
+            {
+                cout<<"Secundario "<<pos<<" "<<dato.getArticulo()<<"\n";
+                TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
+            }
+            else
+            {
+                while(!TablaSecundaria[pos].Vacio())
+                {
+                    pos++;
+                    if(pos==dim)
+                    {
+                        pos=0;
+                    }
+                }
+                cout<<"Secundario "<<pos<<" "<<dato.getArticulo()<<"\n";
+                TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
+            }
             ocupadosSecundarios++;
         }
         void IngresarDato(Datos dato)
@@ -58,7 +73,7 @@ class TablaHashDatos{
             }
             else//Esta lleno y devo mandar a la secundaria
             {         
-                InsertarDatosSecundaria(contadorSecundario,dato);       
+                InsertarDatosSecundaria(clave,dato);       
             }
         }
         void VerOcupaciones()
@@ -68,6 +83,7 @@ class TablaHashDatos{
         }
         void LlenadoDatos(std::string NombreArchivo)
         {
+            cout<<"creando";
             setlocale(LC_ALL, "spanish");
             std::string linea, aux;
             char l = ',';
@@ -110,22 +126,28 @@ class TablaHashDatos{
             cout<<"Se termino la creacion\n";
             VerOcupaciones();
         }
-        /*
-        void ObtenerDato(std::string ArticuloBuscado)
+        Datos Busqueda(std::string Buscado)
         {
-            int PC=HashP(ArticuloBuscado);
-            std::string encontrado=TablaPrincipal[PC].getArticulo();
-            if(encontrado==ArticuloBuscado)
+            int pos=HashP(Buscado);
+            Datos R;
+            if(TablaPrincipal[pos].getArticulo()==Buscado)
             {
-
+                //Lo encontre a la primera
+                R=TablaPrincipal[pos];
             }
             else
             {
-
+                //No esta en la principal
+                while(TablaSecundaria[pos].getArticulo!=Buscado)
+                {
+                    pos++;
+                    if(pos==dim)
+                    {
+                        pos=0;
+                    }
+                }
+                R=TablaSecundaria[pos];
             }
         }
-        */
-
-
 };
 #endif
