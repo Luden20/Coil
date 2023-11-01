@@ -45,16 +45,6 @@ public:
         this->D5 = D5;
         this->total=D1+D2+D3+D4+D5;
     }
-    void ver() {
-        std::cout << "Grupo: " << Grupo << std::endl;
-        std::cout << "Código de Barras: " << CodigoBarras << std::endl;
-        std::cout << "Artículo: " << Articulo << std::endl;
-        std::cout << "D1: " << D1 << std::endl;
-        std::cout << "D2: " << D2 << std::endl;
-        std::cout << "D3: " << D3 << std::endl;
-        std::cout << "D4: " << D4 << std::endl;
-        std::cout << "D5: " << D5 << std::endl;
-    }
     //No hay get  en c++, asi que me las arregle haciendo esto
     int getD1(){return D1;}
     int getD2(){return D2;}
@@ -96,6 +86,16 @@ public:
             r=true;
         }
         return r;
+    }
+    void ver() {
+        std::cout << "Grupo: " << Grupo << std::endl;
+        std::cout << "Código de Barras: " << CodigoBarras << std::endl;
+        std::cout << "Artículo: " << Articulo << std::endl;
+        std::cout << "D1: " << D1 << std::endl;
+        std::cout << "D2: " << D2 << std::endl;
+        std::cout << "D3: " << D3 << std::endl;
+        std::cout << "D4: " << D4 << std::endl;
+        std::cout << "D5: " << D5 << std::endl;
     }
 };
 

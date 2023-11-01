@@ -37,7 +37,7 @@ class TablaHashDatos{
         }
         void InsertarDatoPrincipal(int pos,Datos dato)
         {
-            cout<<"Principal "<<pos<<" "<<dato.getArticulo()<<"\n";
+            //cout<<"Principal "<<pos<<" "<<dato.getArticulo()<<"\n";
             TablaPrincipal.insert(TablaPrincipal.begin()+pos,dato);
             ocupadosPrincipal++;
         }
@@ -45,7 +45,7 @@ class TablaHashDatos{
         {
             if(TablaSecundaria[pos].Vacio())
             {
-                cout<<"Secundario "<<pos<<" "<<dato.getArticulo()<<"\n";
+                //cout<<"Secundario "<<pos<<" "<<dato.getArticulo()<<"\n";
                 TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
             }
             else
@@ -58,7 +58,7 @@ class TablaHashDatos{
                         pos=0;
                     }
                 }
-                cout<<"Secundario "<<pos<<" "<<dato.getArticulo()<<"\n";
+                //cout<<"Secundario "<<pos<<" "<<dato.getArticulo()<<"\n";
                 TablaSecundaria.insert(TablaSecundaria.begin()+pos,dato);
             }
             ocupadosSecundarios++;
@@ -138,8 +138,9 @@ class TablaHashDatos{
             else
             {
                 //No esta en la principal
-                while(TablaSecundaria[pos].getArticulo!=Buscado)
+                while(TablaSecundaria[pos].getArticulo()!=Buscado)
                 {
+                    cout<<"Buscando\n";
                     pos++;
                     if(pos==dim)
                     {

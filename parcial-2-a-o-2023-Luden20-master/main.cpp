@@ -45,6 +45,9 @@ int main() {
     int l=ContarLineas(NombreArchivo);
     TablaHashDatos thd(l);
     thd.LlenadoDatos(NombreArchivo);
+    //Datos prueba=thd.Busqueda("PILETA DE VIDRIO CUADRADA NARANJA");
+    Datos prueba=thd.Busqueda("PILETA ACERO INOX ZZ52");
+    prueba.ver();
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
