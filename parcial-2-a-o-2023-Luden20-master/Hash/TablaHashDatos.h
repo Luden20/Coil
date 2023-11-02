@@ -1,7 +1,7 @@
 #ifndef TABLA_HASH_DATOS_H
 #define TABLA_HASH_DATOS_H
 #include <vector>
-#include "ClaseDATO.h"
+#include "../Datos/ClaseDATO.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -155,20 +155,16 @@ class TablaHashDatos{
             int pos=HashP(Buscado);
             int ipos=pos;
             Datos R;
-            cout<<"Se busco en"<<pos<<" en la tb1 donde esta "<<TablaPrincipal[pos].getArticulo()<<"\n";
             if(TablaPrincipal[pos].getArticulo()==Buscado)
             {
-                cout<<"Se encontro en la tabla 1 en "<<pos<<" \n";
                 //Lo encontre a la primera
                 R=TablaPrincipal[pos];
                 pasos++;
             }
             else
             {
-                cout<<"Se buscara en la tabla 2\n";
                 if(TablaSecundaria[pos].getArticulo()==Buscado)
                 {
-                    cout<<"Se encontro en la tabla 2 en "<<pos<<" \n";
                     R=TablaSecundaria[pos];
                     pasos++;
                 }
@@ -177,11 +173,9 @@ class TablaHashDatos{
                     pasos++;
                     while(TablaSecundaria[pos].getArticulo()!=Buscado)
                     {
-                        cout<<"Se busco en"<<pos<<" en la tb2\n";
                         pasos++;
                         if(TablaSecundaria[pos].getArticulo()==Buscado)
                         {
-                            cout<<"Se encontro en la tabla 2 en "<<pos<<" \n";
                             R=TablaSecundaria[pos];
                         }
                         pos++;
@@ -191,7 +185,6 @@ class TablaHashDatos{
                         }
                         if(pos==ipos)
                         {
-                            cout<<"No se encontro \n";
                             break;
                         }
                     }
@@ -208,6 +201,14 @@ class TablaHashDatos{
             {
                 s=buscado.getTotal();
             }
+            if(s==-1)
+            {
+            cout<<"El articulo"<<nombre_articulo<<" no existe";
+            }
+            else
+            {
+                cout<<"El articulo "<<nombre_articulo<<" tiene "<<s<<" stock en total\n";
+            }
             return s;
         }
         int stock(std::string nombre_articulo,int deposito)
@@ -217,6 +218,14 @@ class TablaHashDatos{
             if(buscado.getArticulo()!="NULL")
             {
                 s=buscado.getD(deposito);
+            }
+            if(s==-1)
+            {
+            cout<<"El articulo"<<nombre_articulo<<" no existe";
+            }
+            else
+            {
+                cout<<"El articulo "<<nombre_articulo<<" tiene "<<s<<" stock en el deposito "<<deposito<<"\n";
             }
             return s;
         }

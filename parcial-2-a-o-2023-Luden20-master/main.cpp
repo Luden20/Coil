@@ -2,16 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "ListaDatos/ListaDatos.h"
-#include "ListaDatos/ListaHash.h"
-#include "ListaDatos/TablaHashDatos.h"
-#include "HashMap/HashEntry.h"
-#include "HashMap/HashMap.h"
-#include "Lista/Lista.h"
-#include "Datos/ClaseDATO.h"
-#include <string>
-#include <functional>
-#include <vector>
+#include "Hash/ClaseDATO.h"
+#include "Hash/TablaHashDatos.h"
 
 int ContarLineas(const std::string &nombrearchivo) {
         std::string linea;
@@ -23,32 +15,18 @@ int ContarLineas(const std::string &nombrearchivo) {
         archivo.close();
         return i;
     }
-int HashP(std::string st)
-        {
-            int clave = 0;
-            for (int i = 0; i < st.length(); i++)
-            {
-                char c = st[i];
-                if (c != '(' && c != ')')
-                {
-                    clave += static_cast<int>(c) * (i + 1); // Multiplicar por la posición
-                }
-            }
-            clave = clave % 232;
-            cout<<clave<<"\n";
-            return clave;
-        }
 int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
     int l=ContarLineas(NombreArchivo);
-    l=200;
-    TablaHashDatos thd(l);
-    thd.LlenadoDatos(NombreArchivo);
+    //l=l+40;   //Se puedo modificar la longitud de ambas tablas
+    TablaHashDatos thd(l);//Creo la clase
+    thd.LlenadoDatos(NombreArchivo);//Lleno las dos tablas con los datos
     //ListaDatos ListaD(NombreArchivo);
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
-    Datos prueba=thd.Busqueda("PILETA DE VIDRIO CUADRADA NARANJA");
+    int st=thd.stock("ANAFE INDUCCION SMART COOK I4");//Uso de la funcion stock
+    int sat=thd.stock("ANAFE INDUCCION SMART COOK I4",4);//Uso de la funcion stock con depositos
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;

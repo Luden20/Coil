@@ -208,6 +208,14 @@ class TablaHashDatos{
             {
                 s=buscado.getTotal();
             }
+            if(s==-1)
+            {
+            cout<<"El articulo"<<nombre_articulo<<" no existe";
+            }
+            else
+            {
+                cout<<"El articulo "<<nombre_articulo<<" tiene "<<s<<" stock en total\n";
+            }
             return s;
         }
         int stock(std::string nombre_articulo,int deposito)
@@ -217,6 +225,14 @@ class TablaHashDatos{
             if(buscado.getArticulo()!="NULL")
             {
                 s=buscado.getD(deposito);
+            }
+            if(s==-1)
+            {
+            cout<<"El articulo"<<nombre_articulo<<" no existe";
+            }
+            else
+            {
+                cout<<"El articulo "<<nombre_articulo<<" tiene "<<s<<" stock en el deposito "<<deposito<<"\n";
             }
             return s;
         }
