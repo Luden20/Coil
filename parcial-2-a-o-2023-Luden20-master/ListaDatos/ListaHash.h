@@ -9,6 +9,7 @@
 #include <sstream>
 #include <string>
 #include <functional>
+#include <cmath> 
 //#include <vector>
 class ListaHash{
     private:
@@ -29,9 +30,79 @@ class ListaHash{
                 return clave;
             }
         void Insertar(Datos dato) {
-            int clave=dato.getArticulo();
+            int clave=HashP(dato.getArticulo());
+            DatoClave aux(clave,dato);
+            int pos=PosInsercion(clave);
+            ListaH.insertar(pos,aux);
+        }
+        int PosInsercion(int clave)
+        {
+            int pos=0,i,claveActual=0;
+            DatoClave aux;
+            if(ListaH.getTamanio()>0)
+            {
+                for(i=0;i<ListaH.getTamanio();i++)
+                {
+                    aux=ListaH.getDato(i);
+                    claveActual=aux.getClave();
+                    if(claveActual>=clave)
+                    {
+                        pos=i;
+                        break;
+                    }
+                }
+                    if (claveActual < clave) {
+                        pos = ListaH.getTamanio();
+                    }
+            }
+            return pos;
+        }
+        DatoClave Busquedabinaria(int claveBuscada)
+        {
+            int limiteInferrior=0,limiteSuperior=ListaH.getTamanio();
+            double CalculoMitad=static_cast<double>((limiteInferrior+limiteSuperior)/2);
+            int PosMitad;
+            int claveActual;
+            int pasos=0;
+            DatoClave aux;
+            DatoClave r;
+            while(limiteInferrior<=limiteInferrior)
+            {
+                pasos++;
+                PosMitad=static_cast<int>(std::round(CalculoMitad));
+                aux=ListaH.getDato(PosMitad);
+                claveActual=aux.getClave();
+                if(claveActual==claveBuscada)
+                {
+                    r=aux;
+                    break;
+                }
+                else if(claveActual<claveBuscada)
+                {
+                    limiteInferrior=PosMitad;
+                }
+                else
+                {
+                    limiteSuperior=PosMitad;
+                }
+            }
+                cout<<"Pasos "<<pasos<<"\n";
+                aux.Ver();
+                return aux;
 
-
+        }
+        void Ver()
+        {
+            int clave;
+            Datos aux;
+            DatoClave aux2;
+            for(int i=0;i<ListaH.getTamanio();i++)
+            {
+                aux2=ListaH.getDato(i);
+                aux=aux2.getDato();
+                clave=aux2.getClave();
+                cout<<"Clave:"<<clave<<"Articulo"<<aux.getArticulo()<<"\n";
+            }
         }
         ListaHash(std::string NombreArchivo)
         {

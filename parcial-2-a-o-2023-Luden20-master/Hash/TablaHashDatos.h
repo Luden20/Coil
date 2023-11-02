@@ -142,7 +142,7 @@ class TablaHashDatos{
         void BusquedaForsada1(std::string buscado)
         {
             int i=0,r=-1;
-            for(i;i<dim;i++)
+            for(i=0;i<dim;i++)
             {
                 if(buscado==TablaPrincipal[i].getArticulo())
                 {

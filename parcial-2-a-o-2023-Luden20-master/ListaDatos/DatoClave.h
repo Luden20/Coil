@@ -27,9 +27,17 @@ class DatoClave{
         {
             this->clave=-1;
         }
+        void Ver()
+        {
+            cout<<"Clave "<<clave<<" Articulo "<<dato.getArticulo()<<"\n";
+        }
         int getClave()
         {
             return clave;
+        }
+        Datos getDato()
+        {
+            return dato;
         }
 };
 #endif
