@@ -1,7 +1,7 @@
 #ifndef TABLA_HASH_DATOS_H
 #define TABLA_HASH_DATOS_H
 #include <vector>
-#include "../Datos/ClaseDATO.h"
+#include "ClaseDATO.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
