@@ -4,7 +4,6 @@
 #include <sstream>
 #include "Hash/ClaseDATO.h"
 #include "Hash/TablaHashDatos.h"
-
 int ContarLineas(const std::string &nombrearchivo) {
         std::string linea;
         int i = 0;
@@ -21,7 +20,6 @@ int main() {
     //l=l+40;   //Se puedo modificar la longitud de ambas tablas
     TablaHashDatos thd(l);//Creo la clase
     thd.LlenadoDatos(NombreArchivo);//Lleno las dos tablas con los datos
-    //ListaDatos ListaD(NombreArchivo);
     clock_t begin;
     std::cout << "Comenzando a medir Tiempo\n" << std::endl;
     begin = clock();
