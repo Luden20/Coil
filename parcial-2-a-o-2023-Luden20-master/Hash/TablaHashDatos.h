@@ -173,6 +173,10 @@ class TablaHashDatos{
                     pasos++;
                     while(TablaSecundaria[pos].getArticulo()!=Buscado)
                     {
+                        if(TablaSecundaria[pos].getArticulo()=="NULL")
+                        {
+                            break;
+                        }
                         pasos++;
                         if(TablaSecundaria[pos].getArticulo()==Buscado)
                         {
@@ -203,7 +207,7 @@ class TablaHashDatos{
             }
             if(s==-1)
             {
-            cout<<"El articulo"<<nombre_articulo<<" no existe";
+            cout<<"El articulo"<<nombre_articulo<<" no existe\n";
             }
             else
             {
@@ -221,7 +225,7 @@ class TablaHashDatos{
             }
             if(s==-1)
             {
-            cout<<"El articulo"<<nombre_articulo<<" no existe";
+            cout<<"El articulo"<<nombre_articulo<<" no existe\n";
             }
             else
             {
