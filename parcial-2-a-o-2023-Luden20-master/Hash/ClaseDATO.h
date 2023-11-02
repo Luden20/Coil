@@ -24,15 +24,8 @@ private:
 public:
     // Constructor sin argumentos
     Datos() {
-        Grupo = "";
-        CodigoBarras = "";
-        Articulo = "NULL";
-        D1 = 0;
-        D2 = 0;
-        D3 = 0;
-        D4 = 0;
-        D5 = 0;
-        total=0;
+        Grupo =CodigoBarras = Articulo = "NULL";
+        D1 = D2 =D3 = D4 =D5 =total=0;
     }
     // Constructor con argumentos
     Datos(std::string Grupo, std::string CodigoBarras, std::string Articulo, int D1, int D2, int D3, int D4, int D5) {

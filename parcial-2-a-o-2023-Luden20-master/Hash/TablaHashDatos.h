@@ -22,6 +22,21 @@ class TablaHashDatos{
             TablaPrincipal.resize(size);
             TablaSecundaria.resize(size);
         }
+        /*
+        int HashP(std::string st)
+        {
+            int clave = 0;
+            for (int i = 0; i < st.length(); i++)
+            {
+                char c = st[i];
+                if (c != '(' && c != ')')
+                {
+                    clave += static_cast<int>(c) * (i + 1); // Multiplicar por la posición
+                }
+            }
+            clave = clave % dim;
+            return clave;
+        }*/
         int HashP(std::string st)
         {
             int clave = 0;
@@ -36,6 +51,7 @@ class TablaHashDatos{
             clave = clave % dim;
             return clave;
         }
+
         void InsertarDatoPrincipal(int pos,Datos dato)
         {
             TablaPrincipal[pos]=dato;
@@ -207,7 +223,7 @@ class TablaHashDatos{
             }
             if(s==-1)
             {
-            cout<<"El articulo"<<nombre_articulo<<" no existe\n";
+            cout<<"El articulo "<<nombre_articulo<<" no existe\n";
             }
             else
             {
@@ -225,7 +241,7 @@ class TablaHashDatos{
             }
             if(s==-1)
             {
-            cout<<"El articulo"<<nombre_articulo<<" no existe\n";
+            cout<<"El articulo "<<nombre_articulo<<" no existe\n";
             }
             else
             {
