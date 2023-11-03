@@ -2,7 +2,7 @@
 #define DATOCLAVE_H
 #include <vector>
 #include "../Lista/Lista.h"
-#include "../Datos/ClaseDATO.h"
+#include "ClaseDATO.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>

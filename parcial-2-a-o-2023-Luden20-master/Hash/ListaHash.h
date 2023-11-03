@@ -2,7 +2,7 @@
 #define HASH_H
 #include <vector>
 #include "../Lista/Lista.h"
-#include "../Datos/ClaseDATO.h"
+#include "ClaseDATO.h"
 #include "DatoClave.h"
 #include <iostream>
 #include <fstream>
@@ -134,16 +134,24 @@ class ListaHash{
         }
         int stock(std::string nombre_articulo,int Deposito)
         {
-            DatoClave aux=Busquedabinaria(nombre_articulo);
-            int st=aux.getDato().getD(Deposito);
-            if(aux.getClave()!=-1)
+            int st=-1;
+            if(Deposito>=1&&Deposito<=5)
             {
-                cout<<"El articulo "<<aux.getDato().getArticulo()<<" tiene "<<st<<" de stock\n";
+                DatoClave aux=Busquedabinaria(nombre_articulo);
+                st=aux.getDato().getD(Deposito);
+                if(aux.getClave()!=-1)
+                {
+                    cout<<"El articulo "<<aux.getDato().getArticulo()<<" tiene "<<st<<" de stock en el deposito "<<Deposito<<"\n";
+                }
+                else
+                {
+                    cout<<"El articulo "<<nombre_articulo<< "no existe\n";
+                }      
             }
             else
             {
-                cout<<"El articulo "<<nombre_articulo<< "no existe\n";
-            }      
+                cout<<"Deposito Invalido\n";
+            }
             return st;
         }
         void Ver()

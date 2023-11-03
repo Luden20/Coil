@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include "../Lista/Lista.h"
-#include "../Datos/ClaseDATO.h"
+#include "ClaseDATO.h"
 #include <string>
 using namespace std;
 /*

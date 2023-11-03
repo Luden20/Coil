@@ -234,18 +234,25 @@ class TablaHashDatos{
         int stock(std::string nombre_articulo,int deposito)
         {
             int s=-1;
-            Datos buscado=Busqueda(nombre_articulo);
-            if(buscado.getArticulo()!="NULL")
+            if(deposito>=1&&deposito<=5)
             {
-                s=buscado.getD(deposito);
-            }
-            if(s==-1)
-            {
-            cout<<"El articulo "<<nombre_articulo<<" no existe\n";
+                Datos buscado=Busqueda(nombre_articulo);
+                if(buscado.getArticulo()!="NULL")
+                {
+                    s=buscado.getD(deposito);
+                }
+                if(s==-1)
+                {
+                cout<<"El articulo "<<nombre_articulo<<" no existe\n";
+                }
+                else
+                {
+                    cout<<"El articulo "<<nombre_articulo<<" tiene "<<s<<" stock en el deposito "<<deposito<<"\n";
+                }
             }
             else
             {
-                cout<<"El articulo "<<nombre_articulo<<" tiene "<<s<<" stock en el deposito "<<deposito<<"\n";
+                cout<<"Deposito invalido\n";
             }
             return s;
         }
