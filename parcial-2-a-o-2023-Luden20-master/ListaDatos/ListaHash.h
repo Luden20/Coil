@@ -57,39 +57,94 @@ class ListaHash{
             }
             return pos;
         }
-        DatoClave Busquedabinaria(int claveBuscada)
-        {
-            int limiteInferrior=0,limiteSuperior=ListaH.getTamanio();
-            double CalculoMitad=static_cast<double>((limiteInferrior+limiteSuperior)/2);
-            int PosMitad;
+        DatoClave Busquedabinaria(std::string ArticuloBuscado) {
+            int claveBuscada=HashP(ArticuloBuscado);
+            int limiteInferrior = 0;
+            int limiteSuperior = ListaH.getTamanio() ; 
+            int pasos = 0;
             int claveActual;
-            int pasos=0;
-            DatoClave aux;
-            DatoClave r;
-            while(limiteInferrior<=limiteInferrior)
+            int PosMitad;
+            std::string ArticuloActual;
+            DatoClave aux,r;
+
+            while (limiteInferrior <= limiteSuperior) {
+                pasos++;
+                PosMitad = (limiteInferrior + limiteSuperior) / 2;
+                if(limiteSuperior-limiteInferrior==1)
+                {
+                    break;
+                }
+                aux = ListaH.getDato(PosMitad);
+                claveActual = aux.getClave();
+                if (claveActual == claveBuscada) {
+                    break;
+                } 
+                else if (claveActual < claveBuscada) {
+                    limiteInferrior = PosMitad ;
+                } 
+                else {
+                    limiteSuperior = PosMitad;
+                }
+            }
+            while(true)
             {
                 pasos++;
-                PosMitad=static_cast<int>(std::round(CalculoMitad));
                 aux=ListaH.getDato(PosMitad);
                 claveActual=aux.getClave();
-                if(claveActual==claveBuscada)
+                if(claveActual!=claveBuscada)
+                {
+                    break;
+                }
+                PosMitad--;
+            }
+            PosMitad++;
+            aux=ListaH.getDato(PosMitad);
+            while (true)
+            {
+                aux=ListaH.getDato(PosMitad);
+                claveActual=aux.getClave();
+                if(claveActual!=claveBuscada)
+                {
+                    break;
+                }
+                ArticuloActual=ListaH.getDato(PosMitad).getDato().getArticulo();
+                if(ArticuloActual==ArticuloBuscado)
                 {
                     r=aux;
                     break;
                 }
-                else if(claveActual<claveBuscada)
-                {
-                    limiteInferrior=PosMitad;
-                }
-                else
-                {
-                    limiteSuperior=PosMitad;
-                }
+                PosMitad++;
             }
-                cout<<"Pasos "<<pasos<<"\n";
-                aux.Ver();
-                return aux;
-
+            cout << "Pasos " << pasos << "\n";
+            return r;
+        }
+        int stock(std::string nombre_articulo)
+        {
+            DatoClave aux=Busquedabinaria(nombre_articulo);
+            int st=aux.getDato().getTotal();
+            if(aux.getClave()!=-1)
+            {
+                cout<<"El articulo "<<aux.getDato().getArticulo()<<" tiene "<<st<<" de stock\n";
+            }
+            else
+            {
+                cout<<"El articulo "<<nombre_articulo<< "no existe\n";
+            }      
+            return st;
+        }
+        int stock(std::string nombre_articulo,int Deposito)
+        {
+            DatoClave aux=Busquedabinaria(nombre_articulo);
+            int st=aux.getDato().getD(Deposito);
+            if(aux.getClave()!=-1)
+            {
+                cout<<"El articulo "<<aux.getDato().getArticulo()<<" tiene "<<st<<" de stock\n";
+            }
+            else
+            {
+                cout<<"El articulo "<<nombre_articulo<< "no existe\n";
+            }      
+            return st;
         }
         void Ver()
         {

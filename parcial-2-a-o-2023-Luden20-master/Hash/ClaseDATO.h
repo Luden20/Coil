@@ -66,6 +66,9 @@ public:
                         case 5:
                             total=D5;
                             break;
+                        default:
+                            total=-1;
+                            break;
                     }
         return total;
     }

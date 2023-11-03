@@ -18,6 +18,7 @@ int ContarLineas(const std::string &nombrearchivo) {
     }
 int main() {
     std::string NombreArchivo = "Inventariado Fisico.csv";
+    ListaHash lh(NombreArchivo);
     int l=ContarLineas(NombreArchivo);   //Se puedo modificar la longitud de ambas tablas
     //TablaHashDatos thd(l);//Creo la clase
     //thd.LlenadoDatos(NombreArchivo);//Lleno las dos tablas con los datos
@@ -27,9 +28,10 @@ int main() {
 
     //int st=thd.stock("PILETA C. CERART ARGENTA BCA");//Uso de la funcion stock
     //int sat=thd.stock("ANAFE INDUCCION SMART COOK I4",4);//Uso de la funcion stock con depositos
-    ListaHash lh(NombreArchivo);
-    lh.Ver();
-    DatoClave x=lh.Busquedabinaria(181);
+    //lh.Ver();
+    //DatoClave x=lh.Busquedabinaria("VASSER CYRANO TOALLERO PERCHA 13/1829");
+    //x.Ver();
+    int xd=lh.stock("GRIFERIA VASSER ZAFIRO MONO NEGRO 12/2302NG");
     clock_t end = clock();
     double elapsed_secs = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
     std::cout << "Tardó " << elapsed_secs << " segundos." << std::endl;
